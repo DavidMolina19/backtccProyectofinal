@@ -77,7 +77,7 @@ public class ZonaServicioImp implements ServicioGenerico<Zona> {
         try{
 
             if (zonarepositorio.existsById(id)){
-                zonarepositorio.deleteById();
+                zonarepositorio.deleteById(id);
                 return true;
 
             }else{
