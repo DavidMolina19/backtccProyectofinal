@@ -49,4 +49,66 @@ public class ZonaControlador {
         }
 
     }
+
+    @GetMapping("/{id}")
+
+    public ResponseEntity<?> buscarPorId(@PathVariable Integer id){
+
+        try{
+
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(zonaServicio.buscarPorId(id));
+
+
+        }catch (Exception error){
+
+            return  ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("{mensaje:datos no encontrados}");
+
+        }
+
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizar(@PathVariable Integer id,@RequestBody Zona zona){
+
+        try{
+
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(zonaServicio.actualizar(id,zona));
+
+
+        }catch (Exception error){
+
+            return  ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("{mensaje: no se pudo actualizar}");
+
+        }
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Integer id){
+
+        try{
+
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(zonaServicio.borrar(id));
+
+
+        }catch (Exception error){
+
+            return  ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body("{mensaje: no se pudo actualizar}");
+
+        }
+
+    }
+
 }
