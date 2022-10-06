@@ -26,10 +26,10 @@ public class MercanciaControlador {
                     .status(HttpStatus.OK)
                     .body(mercanciaServicio.registrar(mercancia));
         }catch (Exception error){
-
+              String mensaje="{\"error\":\"Error revise: "+error+"\"}"; //
             return  ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body("{mensaje:revise su peticion}");
+                    .body(mensaje);
 
         }
 
@@ -53,7 +53,7 @@ public class MercanciaControlador {
         }
 
     }
-    /*@GetMapping("/{id}")
+    @GetMapping("/{id}")
 
     public ResponseEntity<?> buscarPorId(@PathVariable Integer id){
 
@@ -111,6 +111,6 @@ public class MercanciaControlador {
 
         }
 
-    }*/
+    }
 
 }
